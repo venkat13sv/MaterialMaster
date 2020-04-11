@@ -1,0 +1,77 @@
+<mvc:View controllerName="MaterialMaterialMaster.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App>
+		<pages>
+			<Page title="{i18n>title}"
+				showNavButton="true"
+				navButtonPress="handleBack">
+				<content>
+					<Table id="idProductsTable"
+						inset="false"
+						items="{/MaterialMasterSet}">
+								<columns>
+			<Column
+				width="12em">
+				<Text text="Material" />
+			</Column>
+				<Column
+				width="12em">
+				<Text text="Created On" />
+			</Column>
+				<Column
+				width="12em">
+				<Text text="Created By" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Industry Sector" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="Material Type" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Material Group" />
+			</Column>
+			<Column
+				hAlign="End">
+				<Text text="Description" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Navigation">
+				<cells>
+				
+					<Text
+						text="{MATERIAL}" />
+							<Text
+						text="{CREATED_ON}" />
+							<Text
+						text="{CREATED_BY}" />
+							<Text
+						text="{IND_SECTOR}" />
+							<Text
+						text="{MATL_TYPE}" />
+							<Text
+						text="{MATL_GROUP}" />
+							<Text
+						text="{MATERIALDESCRIPTION}" />
+				
+				
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+					</Table>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

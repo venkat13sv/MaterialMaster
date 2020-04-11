@@ -1,0 +1,82 @@
+<mvc:View
+	height="100%"
+	controllerName="MaterialMaterialMaster.controller.createMaterial"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<App id="app">
+	<Page
+		id="page"
+		showHeader="true" >
+		<customHeader>
+			<Bar>
+				<contentRight>
+					<Button id="displayMaterial"  text="Display Materials" press="handleDisplayClick" />
+					<Button id="displayPO"  text="Display Purchase Orders" press="handlePODisplay" />
+			
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<f:SimpleForm id="SimpleFormChange354wide"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						title="Create Material Master"
+						singleContainerFullSize="false">
+						<f:content>
+							<Label text="Material" />
+							<Input id="material" value="" />
+							<Label text="Description" />
+							<Input id="mdescription" value="">
+							</Input>
+							<Label text="Material Type" />
+							<Input id="mtype" value=""
+										showSuggestion="true"
+										suggestionItems="{/MaterialTypeSet}">
+									<suggestionItems>
+										<core:ListItem text="{MType}" additionalText="{MTypeDescription}"/>
+									</suggestionItems>
+							</Input>
+								<Label text="Industry Sector" />
+							<Input id="mind_sector" value=""
+									showSuggestion="true"
+									showValueHelp="true"
+									valueHelpRequest="handleValueHelp"
+									suggestionItems="{/InsdustrySectorSet}">
+								<suggestionItems>
+									<core:Item text="{Mbrsh}" />
+								</suggestionItems>
+							</Input>
+								<Label text="Material Group" />
+							<Input id="mgroup" value=""
+										showSuggestion="true"
+										suggestionItems="{/MaterialGroupSet}">
+									<suggestionItems>
+										<core:ListItem text="{MGroup}" additionalText="{MGroupDescription}"/>
+									</suggestionItems>
+							</Input>
+						
+					<Button id="create" text="Create Material" type="Default" press="handleCreateMaterial" />
+			
+			
+						
+						
+							
+							<!--<Label text="Country where the contact is located" />
+							<Select id="country" selectedKey="">
+								<items>
+									<core:Item text="England" key="England"/>
+									<core:Item text="Germany" key="Germany"/>
+									<core:Item text="USA" key="USA"/>
+								</items>
+							</Select>-->
+					</f:content>
+				</f:SimpleForm>
+			</VBox>
+		</content>
+	</Page>
+	</App>
+</mvc:View>

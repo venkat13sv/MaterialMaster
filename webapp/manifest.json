@@ -1,0 +1,168 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "MaterialMaterialMaster",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZMATERIALMASTER_SRV_01": {
+				"uri": "/sap/opu/odata/sap/ZMATERIALMASTER_SRV_01/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZPURCHASEORDER_CDS": {
+				"uri": "/sap/opu/odata/sap/ZPURCHASEORDER_CDS/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZPURCHASEORDER_CDS/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "MaterialMaterialMaster.view.createMaterial",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "MaterialMaterialMaster.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZMATERIALMASTER_SRV_01",
+				"preload": true
+			},
+			"PurchaseOrders": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZPURCHASEORDER_CDS",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"viewPath": "MaterialMaterialMaster/view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"routerClass": "sap.m.routing.Router",
+				"viewLevel": 1
+			},
+			"targets": {
+				"Display_Materials": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "View1",
+					"viewLevel": 1,
+					"controlAggregation": "pages"
+				},
+				"Home_route": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "createMaterial",
+					"viewLevel": 1,
+					"controlAggregation": "pages"
+				},
+				"Display_Purchase_Orders": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "displayPOList",
+					"viewLevel": 1,
+					"controlAggregation": "pages"
+				}
+			},
+			"routes": [{
+				"name": "Home",
+				"pattern": "",
+				"titleTarget": "Home",
+				"greedy": false,
+				"target": ["Home_route"]
+			}, 
+			{
+				"name": "Display_Materials",
+				"pattern": "display",
+				"titleTarget": "Display_Materials",
+				"greedy": false,
+				"target": ["Display_Materials"]
+			},
+			{
+				"name": "Display_Purchase_Orders",
+				"pattern": "displayPO",
+				"titleTarget": "Display_Purchase_Orders",
+				"greedy": false,
+				"target": ["Display_Purchase_Orders"]
+				
+			}]
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zmaterialmaster/webapp",
+		"_version": "1.1.0"
+	}
+}
